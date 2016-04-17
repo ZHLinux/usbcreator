@@ -1,0 +1,23 @@
+#!/usr/bin/python
+#-*-coding:utf-8-*-
+
+import os
+print "\n\tCreator By Zaur"
+print "\n\thttps://www.facebook.com/zaurhlee"
+print "\n\thttps://www.youtube.com/channel/UCJCndfGlCt808IWlbG_liXw"
+print "\n\tSudo olaraq giriş etməlisiniz...."
+usb=raw_input("\n\tendirdiyiniz iso yolunu yazın : ")
+print "\n\tiso yolunuz : ",usb
+print "\n"
+os.system("lsblk")
+print "\n"
+dev=raw_input("\n\tdevicenin /dev/ adresini yazın yazın : ")
+command1 = "\n\tCommand : dd if="+usb+" of=/dev/"+dev
+print command1
+print "\n\t"
+os.system("sudo umount "+dev)
+os.system("sudo umount "+dev+"1")
+os.system("sudo umount "+dev+"2")
+os.system("sudo mkdosfs -F 32 -I /dev/"+dev)
+os.system("sudo dd if="+usb+" of=/dev/"+dev)
+print "\n"
